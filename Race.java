@@ -1,5 +1,4 @@
 import java.util.concurrent.TimeUnit;
-import java.lang.Math;
 
 /**
  * A three-horse race, each horse running in its own lane
@@ -25,10 +24,13 @@ public class Race
     {
         // initialise instance variables
         raceLength = distance;
-        lane1Horse = null;
-        lane2Horse = null;
-        lane3Horse = null;
+        lane1Horse = new Horse('a', "Horse A" , 0.9999);
+        lane2Horse = new Horse('b', "Horse B" , 0.9999);
+        lane3Horse = new Horse('c', "Horse C" , 0.9999);
+
     }
+
+
     
     /**
      * Adds a horse to the race in a given lane
@@ -83,10 +85,19 @@ public class Race
             printRace();
             
             //if any of the three horses has won the race is finished
-            if ( raceWonBy(lane1Horse) || raceWonBy(lane2Horse) || raceWonBy(lane3Horse) )
-            {
+            if (raceWonBy(lane1Horse)){
+                System.out.println("And the winner is... " + lane1Horse.getName().toUpperCase() + "!");
                 finished = true;
             }
+            else if ( raceWonBy(lane2Horse)){
+                System.out.println("And the winner is... " + lane2Horse.getName().toUpperCase() + "!");
+                finished = true;
+            }
+            else if ( raceWonBy(lane3Horse)){
+                System.out.println("And the winner is... " + lane3Horse.getName().toUpperCase() + "!");
+                finished = true;
+            }
+
            
             //wait for 100 milliseconds
             try{ 
